@@ -39,16 +39,14 @@ class _SettingsPaneState extends State<SettingsPane> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Material(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    print("tapped pic");
-                                  },
-                                  child: CircleAvatar(
-                                    backgroundImage:
-                                        AssetImage('assets/babytom.png'),
-                                    radius: 60,
-                                  ),
+                              GestureDetector(
+                                onTap: () {
+                                  print("tapped pic");
+                                },
+                                child: CircleAvatar(
+                                  backgroundImage:
+                                      AssetImage('assets/babytom.png'),
+                                  radius: 60,
                                 ),
                               ),
                             ],
@@ -286,20 +284,52 @@ class _SettingsPaneState extends State<SettingsPane> {
                   SizedBox(height: 40.0),
                   Divider(height: 1, color: Colors.grey.shade600),
                   Container(
-                    decoration: new BoxDecoration(color: Colors.white),
-                    child: ListTile(
-                      title: Text(
-                        "My QR Code",
+                    decoration: new BoxDecoration(color: Color(0xffffffff)),
+                    child: new Material(
+                      child: new InkWell(
+                        onTap: () {
+                          print("tapped qr");
+                        },
+                        child: Column(
+                          children: <Widget>[
+                            new Container(
+                              width: double.infinity,
+                              height: 40,
+                              padding: const EdgeInsets.only(
+                                left: 40,
+                              ),
+                              child: Container(
+                                child: Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: new Padding(
+                                            padding: const EdgeInsets.only(
+                                              top: 10,
+                                            ),
+                                            child: Text(
+                                              'My QR CODE',
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontFamily: 'Lato',
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      leading: Icon(Icons.qr_code_outlined),
-                      trailing: Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Colors.grey.shade400,
-                      ),
-                      dense: true,
-                      onTap: () {
-                        print("tapped qr");
-                      },
                     ),
                   ),
                   Divider(height: 1, color: Colors.grey.shade600),
