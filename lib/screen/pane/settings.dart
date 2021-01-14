@@ -97,7 +97,11 @@ class _SettingsPaneState extends State<SettingsPane> {
                                       ),
                                     ),
                                     Expanded(
-                                      child: Icon(Icons.keyboard_arrow_right),
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 300),
+                                        child: Icon(Icons.keyboard_arrow_right),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -155,7 +159,11 @@ class _SettingsPaneState extends State<SettingsPane> {
                                       ),
                                     ),
                                     Expanded(
-                                      child: Icon(Icons.keyboard_arrow_right),
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 300),
+                                        child: Icon(Icons.keyboard_arrow_right),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -213,7 +221,11 @@ class _SettingsPaneState extends State<SettingsPane> {
                                       ),
                                     ),
                                     Expanded(
-                                      child: Icon(Icons.keyboard_arrow_right),
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 300),
+                                        child: Icon(Icons.keyboard_arrow_right),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -344,16 +356,14 @@ class _SettingsPaneState extends State<SettingsPane> {
 
   Widget buildAppBar(BuildContext context) {
     return AppBar(
-      title: Center(
-        child: Text(
-          'Profile',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.black,
-            fontFamily: 'Lato',
-            fontWeight: FontWeight.w700,
-            fontSize: 17,
-          ),
+      centerTitle: true,
+      title: Text(
+        'Profile',
+        style: TextStyle(
+          color: Colors.black,
+          fontFamily: 'Lato',
+          fontWeight: FontWeight.w700,
+          fontSize: 17,
         ),
       ),
       backgroundColor: Color(0xFFFFFFFF),
@@ -382,13 +392,6 @@ class CustomDialog extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          // Image.asset(
-          //   'assets/bg.jpg',
-          //   fit: BoxFit.cover,
-          //   height: 300,
-          //   width: double.infinity,
-          // ),
-          // SizedBox(height: 30),
           Padding(
             padding: const EdgeInsets.only(top: 30),
             child: Text(
@@ -426,7 +429,7 @@ class CustomDialog extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       elevation: 0.0,
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.grey.shade400,
       child: dialogContent(context),
     );
   }

@@ -1,10 +1,9 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'pane/contacts.dart';
 import 'pane/settings.dart';
 
-/// This is the main application widget.
 class MyApp extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
 
@@ -17,7 +16,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/// This is the stateful widget that the main application instantiates.
 class MyStatefulWidget extends StatefulWidget {
   MyStatefulWidget({Key key}) : super(key: key);
 
@@ -58,9 +56,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             setState(() => _selectedIndex = index);
           },
           children: <Widget>[
-            Text(
-              'Index 0: Home',
-            ),
+            ContactsPane(),
             Text(
               'Index 1: Business',
             ),
