@@ -122,7 +122,6 @@ class _groupMemEditState extends State<groupMemEdit>
     );
   }
 
-
   @override
   void initState() {
     animationController = AnimationController(
