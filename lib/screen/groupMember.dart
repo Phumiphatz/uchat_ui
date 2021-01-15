@@ -218,7 +218,10 @@ class _groupMemberState extends State<groupMember> {
           child: Text('Edit', style: appBarTextStyle()),
           textColor: Colors.black,
           onPressed: () {
-            openPage(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => groupMemEdit()),
+            );
           },
         ),
       ],
