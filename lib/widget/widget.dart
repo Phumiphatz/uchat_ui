@@ -28,3 +28,21 @@ TextStyle simpleTextStyle() {
 TextStyle biggerTextStyle() {
   return TextStyle(color: Colors.white, fontSize: 17);
 }
+
+TextStyle memTextStyle() {
+  return TextStyle(
+    color: Colors.black,
+    fontFamily: 'Lato',
+    fontWeight: FontWeight.w600,
+    fontSize: 14,
+  );
+}
+
+TextStyle appBarTextStyle() {
+  return TextStyle(
+    color: Colors.black,
+    fontFamily: 'Lato',
+    fontWeight: FontWeight.w700,
+    fontSize: 17,
+  );
+}

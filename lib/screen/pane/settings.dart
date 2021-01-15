@@ -186,11 +186,11 @@ class _SettingsPaneState extends State<SettingsPane> {
                       child: new InkWell(
                         onTap: () {
                           showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return CustomDialog();
-                              });
-                          ;
+                            context: context,
+                            builder: (BuildContext context) {
+                              return CustomDialog();
+                            },
+                          );
                         },
                         child: Column(
                           children: <Widget>[

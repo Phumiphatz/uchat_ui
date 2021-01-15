@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uchat/screen/groupMemberEdit.dart';
+import 'package:uchat/widget/widget.dart';
 
 class groupMember extends StatefulWidget {
   @override
@@ -26,28 +27,25 @@ class _groupMemberState extends State<groupMember> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     TextField(
-                      //style:
                       controller: editingController,
                       decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.grey.shade200,
-                          hintText: "Search",
-                          prefixIcon: Icon(Icons.search),
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)))),
+                        filled: true,
+                        fillColor: Colors.grey.shade200,
+                        hintText: "Search",
+                        prefixIcon: Icon(Icons.search),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15.0))),
+                        enabledBorder: const OutlineInputBorder(
+                            borderSide:
+                                const BorderSide(color: Colors.grey, width: 0),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(15.0))),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 20, left: 10),
-                      child: Text(
-                        'Member',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'Lato',
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                        ),
-                      ),
+                      child: Text('Member', style: memTextStyle()),
                     ),
                     Row(
                       children: [
@@ -66,19 +64,11 @@ class _groupMemberState extends State<groupMember> {
                                 ),
                               ),
                             ),
-                            // Padding(
-                            //   padding: const EdgeInsets.only(top: 20),
-                            //   child: CircleAvatar(
-                            //     backgroundColor: Colors.transparent,
-                            //     backgroundImage: AssetImage('assets/add.png'),
-                            //     radius: 30,
-                            //   ),
-                            // ),
                             Padding(
                               padding: const EdgeInsets.only(
                                 top: 10,
                               ),
-                              child: Text('add'),
+                              child: Text('add', style: memTextStyle()),
                             )
                           ],
                         ),
@@ -95,7 +85,7 @@ class _groupMemberState extends State<groupMember> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 10, left: 15),
-                              child: Text('tommy'),
+                              child: Text('tommy', style: memTextStyle()),
                             )
                           ],
                         ),
@@ -111,7 +101,7 @@ class _groupMemberState extends State<groupMember> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 10, left: 15),
-                              child: Text('jerry'),
+                              child: Text('Jerry', style: memTextStyle()),
                             )
                           ],
                         ),
@@ -127,7 +117,7 @@ class _groupMemberState extends State<groupMember> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 10, left: 15),
-                              child: Text('test'),
+                              child: Text('test', style: memTextStyle()),
                             )
                           ],
                         ),
@@ -143,7 +133,7 @@ class _groupMemberState extends State<groupMember> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 10, left: 15),
-                              child: Text('test'),
+                              child: Text('test', style: memTextStyle()),
                             )
                           ],
                         ),
@@ -163,7 +153,7 @@ class _groupMemberState extends State<groupMember> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 10, left: 15),
-                              child: Text('test'),
+                              child: Text('test', style: memTextStyle()),
                             )
                           ],
                         ),
@@ -179,7 +169,7 @@ class _groupMemberState extends State<groupMember> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 10, left: 15),
-                              child: Text('test'),
+                              child: Text('test', style: memTextStyle()),
                             )
                           ],
                         ),
@@ -195,7 +185,7 @@ class _groupMemberState extends State<groupMember> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 10, left: 15),
-                              child: Text('test'),
+                              child: Text('test', style: memTextStyle()),
                             )
                           ],
                         ),
@@ -222,22 +212,10 @@ class _groupMemberState extends State<groupMember> {
         ),
         onPressed: () => Navigator.of(context).pop(),
       ),
-      title: const Text('Member',
-          style: TextStyle(
-            color: Colors.black,
-            fontFamily: 'Lato',
-            fontWeight: FontWeight.w700,
-            fontSize: 17,
-          )),
+      title: Text('Member', style: appBarTextStyle()),
       actions: <Widget>[
         FlatButton(
-          child: Text('Edit',
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Lato',
-                fontWeight: FontWeight.w700,
-                fontSize: 17,
-              )),
+          child: Text('Edit', style: appBarTextStyle()),
           textColor: Colors.black,
           onPressed: () {
             openPage(context);
