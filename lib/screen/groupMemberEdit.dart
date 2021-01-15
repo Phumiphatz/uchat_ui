@@ -10,6 +10,7 @@ class groupMemEdit extends StatefulWidget {
 class _groupMemEditState extends State<groupMemEdit>
     with TickerProviderStateMixin {
   AnimationController animationController;
+  bool _visible = false;
   TextEditingController editingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -36,6 +37,9 @@ class _groupMemEditState extends State<groupMemEdit>
               } else {
                 animationController.forward();
               }
+              setState(() {
+                _visible = !_visible;
+              });
             },
           ),
         ],
@@ -76,13 +80,32 @@ class _groupMemEditState extends State<groupMemEdit>
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Column(
                             children: [
                               Container(
                                 width: tween.value / 2,
-                                height: 500,
-                                color: Colors.pink[400],
+                                height: 550,
+                                color: Colors.grey,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      child: AnimatedOpacity(
+                                        opacity: _visible ? 1.0 : 0.0,
+                                        duration: Duration(milliseconds: 1000),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 35),
+                                          child: Icon(
+                                            Icons.circle,
+                                            size: 30,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -91,8 +114,7 @@ class _groupMemEditState extends State<groupMemEdit>
                               Row(
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 20, left: 15),
+                                    padding: const EdgeInsets.only(top: 20),
                                     child: CircleAvatar(
                                       backgroundColor: Colors.blue,
                                       backgroundImage:
