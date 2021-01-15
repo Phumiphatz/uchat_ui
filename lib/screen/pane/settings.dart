@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:uchat/widget/widget.dart';
 
 class SettingsPane extends StatefulWidget {
   @override
@@ -149,12 +150,7 @@ class _SettingsPaneState extends State<SettingsPane> {
                                         ),
                                         child: Text(
                                           'Status',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontFamily: 'Lato',
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 14,
-                                          ),
+                                          style: memTextStyle(),
                                         ),
                                       ),
                                     ),
@@ -211,12 +207,7 @@ class _SettingsPaneState extends State<SettingsPane> {
                                         ),
                                         child: Text(
                                           'Phone',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontFamily: 'Lato',
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 14,
-                                          ),
+                                          style: memTextStyle(),
                                         ),
                                       ),
                                     ),
@@ -262,12 +253,7 @@ class _SettingsPaneState extends State<SettingsPane> {
                                   ),
                                   child: Text(
                                     'Username',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontFamily: 'Lato',
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14,
-                                    ),
+                                    style: memTextStyle(),
                                   ),
                                 ),
                               ),
@@ -277,12 +263,7 @@ class _SettingsPaneState extends State<SettingsPane> {
                                       const EdgeInsets.only(top: 7, right: 15),
                                   child: Text(
                                     'Domino',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontFamily: 'Lato',
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14,
-                                    ),
+                                    style: memTextStyle(),
                                   ),
                                 ),
                               ),
@@ -324,12 +305,7 @@ class _SettingsPaneState extends State<SettingsPane> {
                                             ),
                                             child: Text(
                                               'My QR CODE',
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontFamily: 'Lato',
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 14,
-                                              ),
+                                              style: memTextStyle(),
                                             ),
                                           ),
                                         ),
@@ -359,12 +335,7 @@ class _SettingsPaneState extends State<SettingsPane> {
       centerTitle: true,
       title: Text(
         'Profile',
-        style: TextStyle(
-          color: Colors.black,
-          fontFamily: 'Lato',
-          fontWeight: FontWeight.w700,
-          fontSize: 17,
-        ),
+        style: appBarTextStyle(),
       ),
       backgroundColor: Color(0xFFFFFFFF),
     );
