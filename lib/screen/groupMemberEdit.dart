@@ -11,7 +11,35 @@ class _groupMemEditState extends State<groupMemEdit>
     with TickerProviderStateMixin {
   AnimationController animationController;
   bool _visible = false;
+  bool textedit = false;
+  bool coloredit = false;
+  bool iconchange = true;
+  bool checkIcon = false;
+
+  void toggleCheck() {
+    iconchange = !iconchange;
+  }
+
   TextEditingController editingController = TextEditingController();
+
+  @override
+  void initState() {
+    animationController = AnimationController(
+        duration: Duration(milliseconds: 1000), vsync: this);
+    animationController.addListener(() {
+      setState(() {
+        print(animationController.value);
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var tween = Tween<double>(begin: 0, end: 100).animate(animationController);
@@ -29,17 +57,29 @@ class _groupMemEditState extends State<groupMemEdit>
         title: Text('Member', style: appBarTextStyle()),
         actions: <Widget>[
           FlatButton(
-            child: Text('Edit', style: appBarTextStyle()),
-            textColor: Colors.black,
+            child: Text(textedit ? 'Remove' : 'Edit',
+                style: TextStyle(
+                  color: coloredit ? Colors.red : Colors.black,
+                  fontFamily: 'Lato',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 17,
+                )),
             onPressed: () {
               if (animationController.isCompleted) {
                 animationController.reverse();
+                setState(() {
+                  _visible = false;
+                  coloredit = false;
+                  textedit = false;
+                });
               } else {
                 animationController.forward();
+                setState(() {
+                  _visible = true;
+                  coloredit = true;
+                  textedit = true;
+                });
               }
-              setState(() {
-                _visible = !_visible;
-              });
             },
           ),
         ],
@@ -97,9 +137,19 @@ class _groupMemEditState extends State<groupMemEdit>
                                         child: Padding(
                                           padding:
                                               const EdgeInsets.only(top: 35),
-                                          child: Icon(
-                                            Icons.circle,
-                                            size: 30,
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              print("tapped circle");
+                                              setState(() {
+                                                toggleCheck();
+                                              });
+                                            },
+                                            child: Icon(
+                                              iconchange
+                                                  ? Icons.circle
+                                                  : Icons.check_circle_outline,
+                                              size: 30,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -144,35 +194,17 @@ class _groupMemEditState extends State<groupMemEdit>
     );
   }
 
-  @override
-  void initState() {
-    animationController = AnimationController(
-        duration: Duration(milliseconds: 1000), vsync: this);
-    animationController.addListener(() {
-      setState(() {
-        print(animationController.value);
-      });
-    });
-    super.initState();
-  }
+  // Widget buildSizeTransitionWidget(
+  //     {AnimationController controller, Widget widget}) {
+  //   return AnimatedBuilder(
+  //       animation: controller,
+  //       child: widget,
+  //       builder: (context, child) {
+  //         return SizeTransition(
+  //             axis: Axis.horizontal,
+  //             axisAlignment: 1,
+  //             sizeFactor: Tween<double>(begin: 0, end: 1).animate(controller),
+  //             child: child);
+  //       });
 
-  @override
-  void dispose() {
-    animationController.dispose();
-    super.dispose();
-  }
-
-  Widget buildSizeTransitionWidget(
-      {AnimationController controller, Widget widget}) {
-    return AnimatedBuilder(
-        animation: controller,
-        child: widget,
-        builder: (context, child) {
-          return SizeTransition(
-              axis: Axis.horizontal,
-              axisAlignment: 1,
-              sizeFactor: Tween<double>(begin: 0, end: 1).animate(controller),
-              child: child);
-        });
-  }
 }

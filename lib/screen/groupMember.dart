@@ -10,6 +10,35 @@ class groupMember extends StatefulWidget {
 
 class _groupMemberState extends State<groupMember> {
   TextEditingController editingController = TextEditingController();
+
+  @override
+  Widget buildAppBar(BuildContext context) {
+    return AppBar(
+      backgroundColor: Color(0xffffffff),
+      centerTitle: true,
+      leading: IconButton(
+        icon: Icon(
+          Icons.arrow_back_ios,
+          color: Colors.black,
+        ),
+        onPressed: () => Navigator.of(context).pop(),
+      ),
+      title: Text('Member', style: appBarTextStyle()),
+      actions: <Widget>[
+        FlatButton(
+          child: Text('Edit', style: appBarTextStyle()),
+          textColor: Colors.black,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => groupMemEdit()),
+            );
+          },
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -198,33 +227,6 @@ class _groupMemberState extends State<groupMember> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget buildAppBar(BuildContext context) {
-    return AppBar(
-      backgroundColor: Color(0xffffffff),
-      centerTitle: true,
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back_ios,
-          color: Colors.black,
-        ),
-        onPressed: () => Navigator.of(context).pop(),
-      ),
-      title: Text('Member', style: appBarTextStyle()),
-      actions: <Widget>[
-        FlatButton(
-          child: Text('Edit', style: appBarTextStyle()),
-          textColor: Colors.black,
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => groupMemEdit()),
-            );
-          },
-        ),
-      ],
     );
   }
 }

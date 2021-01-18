@@ -7,7 +7,82 @@ class SettingsPane extends StatefulWidget {
   _SettingsPaneState createState() => _SettingsPaneState();
 }
 
+class CustomDialog extends StatelessWidget {
+  dialogContent(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 800,
+      decoration: new BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.rectangle,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10.0,
+            offset: const Offset(0.0, 10.0),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 30),
+            child: Text(
+              "Text 1",
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
+            child: SizedBox(
+              width: double.infinity,
+              child: RaisedButton(
+                onPressed: () =>
+                    {Navigator.of(context, rootNavigator: true).pop('dialog')},
+                textColor: Colors.blue,
+                child: Text(
+                  'Save',
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      insetPadding: EdgeInsets.all(20),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      elevation: 0.0,
+      backgroundColor: Colors.grey.shade400,
+      child: dialogContent(context),
+    );
+  }
+}
+
 class _SettingsPaneState extends State<SettingsPane> {
+  Widget buildAppBar(BuildContext context) {
+    return AppBar(
+      centerTitle: true,
+      title: Text(
+        'Profile',
+        style: appBarTextStyle(),
+      ),
+      backgroundColor: Color(0xFFFFFFFF),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -327,81 +402,6 @@ class _SettingsPaneState extends State<SettingsPane> {
           ],
         ),
       ),
-    );
-  }
-
-  Widget buildAppBar(BuildContext context) {
-    return AppBar(
-      centerTitle: true,
-      title: Text(
-        'Profile',
-        style: appBarTextStyle(),
-      ),
-      backgroundColor: Color(0xFFFFFFFF),
-    );
-  }
-}
-
-class CustomDialog extends StatelessWidget {
-  dialogContent(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 800,
-      decoration: new BoxDecoration(
-        color: Colors.white,
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 10.0,
-            offset: const Offset(0.0, 10.0),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 30),
-            child: Text(
-              "Text 1",
-              style: TextStyle(
-                fontSize: 24.0,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
-            child: SizedBox(
-              width: double.infinity,
-              child: RaisedButton(
-                onPressed: () =>
-                    {Navigator.of(context, rootNavigator: true).pop('dialog')},
-                textColor: Colors.blue,
-                child: Text(
-                  'Save',
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
-      insetPadding: EdgeInsets.all(20),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      elevation: 0.0,
-      backgroundColor: Colors.grey.shade400,
-      child: dialogContent(context),
     );
   }
 }
