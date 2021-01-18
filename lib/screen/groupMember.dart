@@ -73,24 +73,25 @@ class _groupMemberState extends State<groupMember> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 20, left: 10),
+                      padding:
+                          const EdgeInsets.only(top: 20, left: 10, bottom: 20),
                       child: Text('Member', style: memTextStyle()),
                     ),
-                    Row(
+                    Wrap(
+                      spacing: 15,
+                      runSpacing: 20,
+                      direction: Axis.horizontal,
                       children: [
                         Column(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20),
-                              child: GestureDetector(
-                                onTap: () {
-                                  print("tapped add");
-                                },
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.transparent,
-                                  backgroundImage: AssetImage('assets/add.png'),
-                                  radius: 30,
-                                ),
+                            GestureDetector(
+                              onTap: () {
+                                print("tapped add");
+                              },
+                              child: CircleAvatar(
+                                backgroundColor: Colors.transparent,
+                                backgroundImage: AssetImage('assets/add.png'),
+                                radius: 30,
                               ),
                             ),
                             Padding(
@@ -101,125 +102,18 @@ class _groupMemberState extends State<groupMember> {
                             )
                           ],
                         ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20, left: 15),
-                              child: CircleAvatar(
-                                backgroundColor: Colors.blue,
-                                backgroundImage:
-                                    AssetImage('assets/babytom.png'),
-                                radius: 30,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 15),
-                              child: Text('tommy', style: memTextStyle()),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20, left: 15),
-                              child: CircleAvatar(
-                                backgroundColor: Colors.grey,
-                                backgroundImage: AssetImage('assets/jerry.png'),
-                                radius: 30,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 15),
-                              child: Text('Jerry', style: memTextStyle()),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20, left: 15),
-                              child: CircleAvatar(
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/add.png'),
-                                radius: 30,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 15),
-                              child: Text('test', style: memTextStyle()),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20, left: 15),
-                              child: CircleAvatar(
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/add.png'),
-                                radius: 30,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 15),
-                              child: Text('test', style: memTextStyle()),
-                            )
-                          ],
-                        ),
+                        LoopMember('assets/babytom.png', 'tom'),
+                        LoopMember('assets/jerry.png', 'jerry'),
+                        LoopMember('assets/jerry.png', 'jerry'),
+                        LoopMember('assets/jerry.png', 'jerry'),
+                        LoopMember('assets/jerry.png', 'jerry'),
+                        LoopMember('assets/jerry.png', 'jerry'),
+                        LoopMember('assets/jerry.png', 'jerry'),
+                        LoopMember('assets/jerry.png', 'jerry'),
+                        LoopMember('assets/jerry.png', 'jerry'),
+                        LoopMember('assets/jerry.png', 'jerry'),
                       ],
                     ),
-                    Row(
-                      children: [
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20),
-                              child: CircleAvatar(
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/add.png'),
-                                radius: 30,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 15),
-                              child: Text('test', style: memTextStyle()),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20, left: 15),
-                              child: CircleAvatar(
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/add.png'),
-                                radius: 30,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 15),
-                              child: Text('test', style: memTextStyle()),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20, left: 15),
-                              child: CircleAvatar(
-                                backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage('assets/add.png'),
-                                radius: 30,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 15),
-                              child: Text('test', style: memTextStyle()),
-                            )
-                          ],
-                        ),
-                      ],
-                    )
                   ],
                 ),
               )

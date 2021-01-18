@@ -127,7 +127,7 @@ class _groupMemEditState extends State<groupMemEdit>
                               Container(
                                 width: tween.value / 2,
                                 height: 550,
-                                color: Colors.grey,
+                                color: Colors.transparent,
                                 child: Column(
                                   children: [
                                     Container(

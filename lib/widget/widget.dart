@@ -46,3 +46,31 @@ TextStyle appBarTextStyle() {
     fontSize: 17,
   );
 }
+
+class LoopMember extends StatelessWidget {
+  var pic;
+  var textName;
+
+  LoopMember(this.pic, this.textName) {}
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          CircleAvatar(
+            backgroundColor: Colors.blue,
+            backgroundImage: AssetImage(pic),
+            radius: 30,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 10,
+            ),
+            child: Text(textName, style: memTextStyle()),
+          )
+        ],
+      ),
+    );
+  }
+}
