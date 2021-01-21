@@ -10,8 +10,7 @@ class regisTel extends StatefulWidget {
 
 class _regisTelState extends State<regisTel> {
   final _text = TextEditingController();
-  bool _validate = false;
-  bool texterr = false;
+  String errtext;
 
   @override
   Widget buildAppBar(BuildContext context) {
@@ -44,20 +43,26 @@ class _regisTelState extends State<regisTel> {
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   labelText: 'Tel',
-                  errorText: _validate ? 'Value Can\'t Be Empty' : null,
+                  errorText: (errtext),
                 ),
               ),
-              Visibility(visible: texterr, child: Text('You phone num')),
               RaisedButton(
                 onPressed: () {
                   setState(
                     () {
-                      _text.text.isEmpty ? _validate = true : _validate = false;
+                      if (_text.text.isEmpty) {
+                        errtext = 'Value is not empty';
+                      }
+                      if (_text.text.length > 0 && _text.text.length < 10) {
+                        errtext = 'tel must be 10 digit';
+                      }
                       if (_text.text == "0629999999") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => regisOtp()),
                         );
+                      } else {
+                        errtext = 'Tel is 0629999999';
                       }
                       ;
                     },

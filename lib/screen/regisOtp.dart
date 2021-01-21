@@ -10,7 +10,7 @@ class regisOtp extends StatefulWidget {
 
 class _regisOtpState extends State<regisOtp> {
   final _text = TextEditingController();
-  bool _validate = false;
+  String errtext;
 
   @override
   Widget buildAppBar(BuildContext context) {
@@ -43,19 +43,26 @@ class _regisOtpState extends State<regisOtp> {
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   labelText: 'Enter the Value',
-                  errorText: _validate ? 'Value Can\'t Be Empty' : null,
+                  errorText: (errtext),
                 ),
               ),
               RaisedButton(
                 onPressed: () {
                   setState(
                     () {
-                      _text.text.isEmpty ? _validate = true : _validate = false;
+                      if (_text.text.isEmpty) {
+                        errtext = 'Value is not empty';
+                      }
+                      if (_text.text.length > 0 && _text.text.length < 6) {
+                        errtext = 'Otp must be 6 digit';
+                      }
                       if (_text.text == "999999") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => regisComp()),
                         );
+                      } else {
+                        errtext = 'Otp is 999999';
                       }
                       ;
                     },
