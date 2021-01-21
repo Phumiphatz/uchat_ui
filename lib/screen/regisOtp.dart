@@ -56,14 +56,12 @@ class _regisOtpState extends State<regisOtp> {
                 onPressed: () {
                   setState(
                     () {
-                      //_text.text.isEmpty ? _validate = true : _validate = false;
+                      _text.text.isEmpty ? _validate = true : _validate = false;
                       if (_text.text == "999999") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => regisComp()),
                         );
-                      } else {
-                        print('try again');
                       }
                       ;
                     },
