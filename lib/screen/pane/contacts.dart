@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uchat/screen/groupMember.dart';
+import 'package:uchat/screen/regisTel.dart';
 
 class ContactsPane extends StatefulWidget {
   @override
@@ -13,14 +14,31 @@ class _ContactsPaneState extends State<ContactsPane> {
     return Scaffold(
       appBar: this.buildAppBar(context),
       body: Center(
-        child: ElevatedButton(
-            child: Text('Open route'),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => groupMember()),
-              );
-            }),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Column(
+            children: [
+              ElevatedButton(
+                child: Text('GroupMember'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => groupMember()),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: Text('Regis'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => regisTel()),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
