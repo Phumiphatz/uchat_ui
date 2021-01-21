@@ -9,6 +9,10 @@ class regisTel extends StatefulWidget {
 }
 
 class _regisTelState extends State<regisTel> {
+  final _text = TextEditingController();
+  bool _validate = false;
+  bool texterr = false;
+
   @override
   Widget buildAppBar(BuildContext context) {
     return AppBar(
@@ -33,23 +37,36 @@ class _regisTelState extends State<regisTel> {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
-            children: [
+            children: <Widget>[
               TextField(
-                obscureText: true,
+                controller: _text,
+                maxLength: 10,
+                keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'phone',
+                  labelText: 'Tel',
+                  errorText: _validate ? 'Value Can\'t Be Empty' : null,
                 ),
               ),
-              ElevatedButton(
-                child: Text('next'),
+              Visibility(visible: texterr, child: Text('You phone num')),
+              RaisedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => regisOtp()),
+                  setState(
+                    () {
+                      _text.text.isEmpty ? _validate = true : _validate = false;
+                      if (_text.text == "0629999999") {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => regisOtp()),
+                        );
+                      }
+                      ;
+                    },
                   );
                 },
-              ),
+                child: Text('Submit'),
+                textColor: Colors.white,
+                color: Colors.blueAccent,
+              )
             ],
           ),
         ),

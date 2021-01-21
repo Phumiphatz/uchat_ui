@@ -13,12 +13,6 @@ class _regisOtpState extends State<regisOtp> {
   bool _validate = false;
 
   @override
-  void dispose() {
-    _text.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget buildAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Color(0xffffffff),

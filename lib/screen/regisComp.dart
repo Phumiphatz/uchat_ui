@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:uchat/widget/widget.dart';
+import 'package:uchat/screen/homeScreen.dart';
 
 class regisComp extends StatefulWidget {
   @override
@@ -36,6 +37,19 @@ class _regisCompState extends State<regisComp> {
             children: [
               Center(
                 child: Text('Complete'),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 50),
+                child: FloatingActionButton(
+                  onPressed: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MyApp()),
+                    )
+                  },
+                  child: Icon(Icons.home),
+                  backgroundColor: Colors.blue,
+                ),
               ),
             ],
           ),
