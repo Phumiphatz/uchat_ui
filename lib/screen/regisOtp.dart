@@ -61,8 +61,6 @@ class _regisOtpState extends State<regisOtp> {
                           context,
                           MaterialPageRoute(builder: (context) => regisComp()),
                         );
-                      } else {
-                        errtext = 'Otp is 999999';
                       }
                       ;
                     },

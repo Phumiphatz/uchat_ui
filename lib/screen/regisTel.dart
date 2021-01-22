@@ -34,44 +34,60 @@ class _regisTelState extends State<regisTel> {
       appBar: this.buildAppBar(context),
       body: Container(
         child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: <Widget>[
-              TextField(
-                controller: _text,
-                maxLength: 10,
-                keyboardType: TextInputType.phone,
-                decoration: InputDecoration(
-                  labelText: 'Tel',
-                  errorText: (errtext),
+          padding:
+              const EdgeInsets.only(top: 40, left: 10, right: 10, bottom: 10),
+          child: CustomScrollView(
+            slivers: [
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.80,
+                      height: MediaQuery.of(context).size.width * 0.80,
+                      child: Image.asset('assets/startlogin.png'),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30, right: 30),
+                      child: TextField(
+                        controller: _text,
+                        maxLength: 10,
+                        keyboardType: TextInputType.phone,
+                        decoration: InputDecoration(
+                          labelText: 'Tel',
+                          errorText: (errtext),
+                        ),
+                      ),
+                    ),
+                    RaisedButton(
+                      onPressed: () {
+                        setState(
+                          () {
+                            if (_text.text.isEmpty) {
+                              errtext = 'Value is not empty';
+                            }
+                            if (_text.text.length > 0 &&
+                                _text.text.length < 10) {
+                              errtext = 'tel must be 10 digit';
+                            }
+                            if (_text.text == "0629999999") {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => regisOtp()),
+                              );
+                            }
+                            ;
+                          },
+                        );
+                      },
+                      child: Text('Submit'),
+                      textColor: Colors.white,
+                      color: Colors.blueAccent,
+                    )
+                  ],
                 ),
               ),
-              RaisedButton(
-                onPressed: () {
-                  setState(
-                    () {
-                      if (_text.text.isEmpty) {
-                        errtext = 'Value is not empty';
-                      }
-                      if (_text.text.length > 0 && _text.text.length < 10) {
-                        errtext = 'tel must be 10 digit';
-                      }
-                      if (_text.text == "0629999999") {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => regisOtp()),
-                        );
-                      } else {
-                        errtext = 'Tel is 0629999999';
-                      }
-                      ;
-                    },
-                  );
-                },
-                child: Text('Submit'),
-                textColor: Colors.white,
-                color: Colors.blueAccent,
-              )
             ],
           ),
         ),
