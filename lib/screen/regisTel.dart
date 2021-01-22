@@ -65,17 +65,17 @@ class _regisTelState extends State<regisTel> {
                           () {
                             if (_text.text.isEmpty) {
                               errtext = 'Value is not empty';
-                            }
-                            if (_text.text.length > 0 &&
+                            } else if (_text.text.length > 0 &&
                                 _text.text.length < 10) {
                               errtext = 'tel must be 10 digit';
-                            }
-                            if (_text.text == "0629999999") {
+                            } else if (_text.text == "0629999999") {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => regisOtp()),
                               );
+                            } else {
+                              errtext = 'tel = 0629999999';
                             }
                             ;
                           },

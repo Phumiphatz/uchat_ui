@@ -34,7 +34,8 @@ class _regisOtpState extends State<regisOtp> {
       appBar: this.buildAppBar(context),
       body: Container(
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding:
+              const EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 30),
           child: Column(
             children: <Widget>[
               TextField(
@@ -52,15 +53,16 @@ class _regisOtpState extends State<regisOtp> {
                     () {
                       if (_text.text.isEmpty) {
                         errtext = 'Value is not empty';
-                      }
-                      if (_text.text.length > 0 && _text.text.length < 6) {
+                      } else if (_text.text.length > 0 &&
+                          _text.text.length < 6) {
                         errtext = 'Otp must be 6 digit';
-                      }
-                      if (_text.text == "999999") {
+                      } else if (_text.text == "999999") {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => regisComp()),
                         );
+                      } else {
+                        errtext = 'OTP is 999999';
                       }
                       ;
                     },
