@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uchat/widget/widget.dart';
 import 'package:uchat/screen/regisOtp.dart';
+import 'package:uchat/screen/otp.dart';
 
 class regisTel extends StatefulWidget {
   @override
@@ -71,8 +72,7 @@ class _regisTelState extends State<regisTel> {
                             } else if (_text.text == "0629999999") {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => regisOtp()),
+                                MaterialPageRoute(builder: (context) => Otp()),
                               );
                             } else {
                               errtext = 'tel = 0629999999';
