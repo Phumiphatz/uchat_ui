@@ -313,14 +313,13 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
         _fifthDigit = _currentDigit;
       } else if (_sixthDigit == null) {
         _sixthDigit = _currentDigit;
-
-        otp = _firstDigit.toString() +
-            _secondDigit.toString() +
-            _thirdDigit.toString() +
-            _fourthDigit.toString() +
-            _fifthDigit.toString() +
-            _sixthDigit.toString();
       }
+      otp = _firstDigit.toString() +
+          _secondDigit.toString() +
+          _thirdDigit.toString() +
+          _fourthDigit.toString() +
+          _fifthDigit.toString() +
+          _sixthDigit.toString();
     });
   }
 
