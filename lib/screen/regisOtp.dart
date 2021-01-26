@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:uchat/screen/regisComp.dart';
+import 'package:uchat/widget/widget.dart';
 
 class Otp extends StatefulWidget {
   const Otp({
@@ -35,7 +36,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
       leading: new InkWell(
         borderRadius: BorderRadius.circular(30.0),
         child: new Icon(
-          Icons.arrow_back,
+          Icons.arrow_back_ios,
           color: Colors.black54,
         ),
         onTap: () {
@@ -43,6 +44,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
         },
       ),
       centerTitle: true,
+      title: Text('Registration', style: appBarTextStyle()),
     );
   }
 
@@ -62,11 +64,14 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
 
   // Return "Verification Code" label
   get _getVerificationCodeLabel {
-    return new Text(
-      "Verification Code",
-      textAlign: TextAlign.center,
-      style: new TextStyle(
-          fontSize: 28.0, color: Colors.black, fontWeight: FontWeight.bold),
+    return Padding(
+      padding: const EdgeInsets.only(top: 30),
+      child: new Text(
+        "Verification Code",
+        textAlign: TextAlign.center,
+        style: new TextStyle(
+            fontSize: 28.0, color: Colors.black, fontWeight: FontWeight.bold),
+      ),
     );
   }
 
