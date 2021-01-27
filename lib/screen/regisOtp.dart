@@ -14,8 +14,6 @@ class Otp extends StatefulWidget {
 }
 
 class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
-  // Constants
-  AnimationController _controller;
 
   // Variables
   Size _screenSize;
@@ -224,12 +222,6 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
             ),
           ],
         ));
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 
   // Returns "Otp custom text field"

@@ -25,7 +25,7 @@ class _groupMemEditState extends State<groupMemEdit>
   @override
   void initState() {
     animationController = AnimationController(
-        duration: Duration(milliseconds: 1000), vsync: this);
+        duration: Duration(milliseconds: 1000));
     animationController.addListener(() {
       setState(() {
         print(animationController.value);
