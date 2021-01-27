@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uchat/widget/widget.dart';
-import 'package:uchat/screen/regisOtpOld.dart';
 import 'package:uchat/screen/regisOtp.dart';
 
 class regisTel extends StatefulWidget {
