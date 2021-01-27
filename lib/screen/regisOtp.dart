@@ -95,7 +95,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
           if (otp == '666666') {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => regisComp()),
+              MaterialPageRoute(builder: (context) => RegisComp()),
             );
           } else {
             clearOtp();

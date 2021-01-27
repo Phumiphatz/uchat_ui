@@ -3,16 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:uchat/widget/widget.dart';
 import 'package:uchat/screen/regisOtp.dart';
 
-class regisTel extends StatefulWidget {
+class RegisTel extends StatefulWidget {
   @override
-  _regisTelState createState() => _regisTelState();
+  _RegisTelState createState() => _RegisTelState();
 }
 
-class _regisTelState extends State<regisTel> {
+class _RegisTelState extends State<RegisTel> {
   final _text = TextEditingController();
   String errtext;
 
-  @override
+  void checkRegisterTelephone () {
+    if (_text.text.isEmpty) {
+      errtext = 'Value is not empty';
+    } else if (_text.text.length > 0 &&
+        _text.text.length < 10) {
+      errtext = 'tel must be 10 digit';
+    } else if (_text.text == "0629999999") {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Otp()),
+      );
+    } else {
+      errtext = 'tel = 0629999999';
+    }
+
+  }
+
   Widget buildAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Color(0xffffffff),
@@ -63,20 +79,7 @@ class _regisTelState extends State<regisTel> {
                       onPressed: () {
                         setState(
                           () {
-                            if (_text.text.isEmpty) {
-                              errtext = 'Value is not empty';
-                            } else if (_text.text.length > 0 &&
-                                _text.text.length < 10) {
-                              errtext = 'tel must be 10 digit';
-                            } else if (_text.text == "0629999999") {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => Otp()),
-                              );
-                            } else {
-                              errtext = 'tel = 0629999999';
-                            }
-                            ;
+                            checkRegisterTelephone();
                           },
                         );
                       },

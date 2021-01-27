@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uchat/widget/widget.dart';
 
-class groupMemEdit extends StatefulWidget {
+class GroupMemEdit extends StatefulWidget {
   @override
-  _groupMemEditState createState() => _groupMemEditState();
+  _GroupMemEditState createState() => _GroupMemEditState();
 }
 
-class _groupMemEditState extends State<groupMemEdit>
+class _GroupMemEditState extends State<GroupMemEdit>
     with TickerProviderStateMixin {
   AnimationController animationController;
   bool _visible = false;
@@ -88,7 +88,7 @@ class _groupMemEditState extends State<groupMemEdit>
         decoration: BoxDecoration(color: Color(0xffffffff)),
         child: Padding(
           padding:
-              const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 10),
+          const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 10),
           child: CustomScrollView(
             slivers: [
               SliverFillRemaining(
@@ -105,12 +105,12 @@ class _groupMemEditState extends State<groupMemEdit>
                         prefixIcon: Icon(Icons.search),
                         border: OutlineInputBorder(
                             borderRadius:
-                                BorderRadius.all(Radius.circular(15.0))),
+                            BorderRadius.all(Radius.circular(15.0))),
                         enabledBorder: const OutlineInputBorder(
                             borderSide:
-                                const BorderSide(color: Colors.grey, width: 0),
+                            const BorderSide(color: Colors.grey, width: 0),
                             borderRadius:
-                                const BorderRadius.all(Radius.circular(15.0))),
+                            const BorderRadius.all(Radius.circular(15.0))),
                       ),
                     ),
                     Padding(
@@ -136,7 +136,7 @@ class _groupMemEditState extends State<groupMemEdit>
                                         duration: Duration(milliseconds: 1000),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsets.only(top: 35),
+                                          const EdgeInsets.only(top: 35),
                                           child: GestureDetector(
                                             onTap: () {
                                               print("tapped circle");
@@ -168,7 +168,7 @@ class _groupMemEditState extends State<groupMemEdit>
                                     child: CircleAvatar(
                                       backgroundColor: Colors.blue,
                                       backgroundImage:
-                                          AssetImage('assets/babytom.png'),
+                                      AssetImage('assets/babytom.png'),
                                       radius: 30,
                                     ),
                                   ),
@@ -193,18 +193,4 @@ class _groupMemEditState extends State<groupMemEdit>
       ),
     );
   }
-
-  // Widget buildSizeTransitionWidget(
-  //     {AnimationController controller, Widget widget}) {
-  //   return AnimatedBuilder(
-  //       animation: controller,
-  //       child: widget,
-  //       builder: (context, child) {
-  //         return SizeTransition(
-  //             axis: Axis.horizontal,
-  //             axisAlignment: 1,
-  //             sizeFactor: Tween<double>(begin: 0, end: 1).animate(controller),
-  //             child: child);
-  //       });
-
 }

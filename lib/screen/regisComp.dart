@@ -3,14 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:uchat/widget/widget.dart';
 import 'package:uchat/screen/homeScreen.dart';
 
-class regisComp extends StatefulWidget {
+class RegisComp extends StatefulWidget {
   @override
-  _regisCompState createState() => _regisCompState();
+  _RegisCompState createState() => _RegisCompState();
 }
 
-class _regisCompState extends State<regisComp> {
-  @override
-  @override
+class _RegisCompState extends State<RegisComp> {
+
   Widget buildAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Color(0xffffffff),

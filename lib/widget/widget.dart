@@ -48,10 +48,10 @@ TextStyle appBarTextStyle() {
 }
 
 class LoopMember extends StatelessWidget {
-  var pic;
-  var textName;
+  final pic;
+  final textName;
 
-  LoopMember(this.pic, this.textName) {}
+  LoopMember(this.pic, this.textName);
 
   @override
   Widget build(BuildContext context) {

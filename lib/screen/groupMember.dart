@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:uchat/screen/groupMemberEdit.dart';
 import 'package:uchat/widget/widget.dart';
 
-class groupMember extends StatefulWidget {
+class GroupMember extends StatefulWidget {
   @override
-  _groupMemberState createState() => _groupMemberState();
+  _GroupMemberState createState() => _GroupMemberState();
 }
 
-class _groupMemberState extends State<groupMember> {
+class _GroupMemberState extends State<GroupMember> {
   TextEditingController editingController = TextEditingController();
-
-  @override
+  
   Widget buildAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Color(0xffffffff),
@@ -31,7 +30,7 @@ class _groupMemberState extends State<groupMember> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => groupMemEdit()),
+              MaterialPageRoute(builder: (context) => GroupMemEdit()),
             );
           },
         ),

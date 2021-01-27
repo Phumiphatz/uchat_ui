@@ -23,7 +23,7 @@ class _ContactsPaneState extends State<ContactsPane> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => groupMember()),
+                    MaterialPageRoute(builder: (context) => GroupMember()),
                   );
                 },
               ),
@@ -32,7 +32,7 @@ class _ContactsPaneState extends State<ContactsPane> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => regisTel()),
+                    MaterialPageRoute(builder: (context) => RegisTel()),
                   );
                 },
               ),
