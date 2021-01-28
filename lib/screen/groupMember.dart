@@ -10,7 +10,7 @@ class GroupMember extends StatefulWidget {
 
 class _GroupMemberState extends State<GroupMember> {
   TextEditingController editingController = TextEditingController();
-  
+
   Widget buildAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Color(0xffffffff),
@@ -30,7 +30,7 @@ class _GroupMemberState extends State<GroupMember> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => GroupMemEdit()),
+              MaterialPageRoute(builder: (context) => GroupMemberEdit()),
             );
           },
         ),

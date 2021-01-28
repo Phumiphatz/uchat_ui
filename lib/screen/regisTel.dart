@@ -12,11 +12,10 @@ class _RegisTelState extends State<RegisTel> {
   final _text = TextEditingController();
   String errtext;
 
-  void checkRegisterTelephone () {
+  void checkRegisterTelephone() {
     if (_text.text.isEmpty) {
       errtext = 'Value is not empty';
-    } else if (_text.text.length > 0 &&
-        _text.text.length < 10) {
+    } else if (_text.text.length > 0 && _text.text.length < 10) {
       errtext = 'tel must be 10 digit';
     } else if (_text.text == "0629999999") {
       Navigator.push(
@@ -26,7 +25,6 @@ class _RegisTelState extends State<RegisTel> {
     } else {
       errtext = 'tel = 0629999999';
     }
-
   }
 
   Widget buildAppBar(BuildContext context) {
@@ -70,7 +68,7 @@ class _RegisTelState extends State<RegisTel> {
                         maxLength: 10,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
-                          labelText: 'Tel',
+                          labelText: 'Phone Number',
                           errorText: (errtext),
                         ),
                       ),
