@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:uchat/screen/regisComp.dart';
 import 'package:uchat/widget/widget.dart';
+import 'package:http/http.dart' as http;
 
 class Otp extends StatefulWidget {
-  const Otp({
-    Key key,
-  }) : super(key: key);
+  String tokenOtp;
+  Otp(String tokenOtp) {
+    this.tokenOtp = tokenOtp;
+  }
 
   @override
   _OtpState createState() => new _OtpState();
@@ -35,7 +36,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
     setState(() {});
   }
 
-  void checkOtp() {
+  void deleteDigitInOtpTextField() {
     if (sixthDigit != null) {
       sixthDigit = null;
     } else if (fifthDigit != null) {
@@ -50,6 +51,22 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
       firstDigit = null;
     }
   }
+
+  void checkOtp() async {
+    var url = 'https://api.staging.uchat.zimpligital.com/api/auth/otp/verify';
+    var response =
+        await http.post(url, body: {'token': widget.tokenOtp, 'otp': otp});
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+    print('Otp : $otp');
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => RegisComp()),
+    // );
+  }
+  // } else {
+  //   clearOtp();
+  // }
 
   // Returns "Appbar"
   get getAppbar {
@@ -116,16 +133,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
   get getButton {
     return new RaisedButton(
       onPressed: () {
-        setState(() {
-          if (otp == '666666') {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => RegisComp()),
-            );
-          } else {
-            clearOtp();
-          }
-        });
+        checkOtp();
       },
       child: Text('Submit'),
       textColor: Colors.white,
@@ -225,7 +233,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
                     onPressed: () {
                       setState(
                         () {
-                          checkOtp();
+                          deleteDigitInOtpTextField();
                         },
                       );
                     },

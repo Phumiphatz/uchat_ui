@@ -14,31 +14,35 @@ class _RegisTelState extends State<RegisTel> {
   final countryCode = 'TH';
   String errtext;
   String phoneCutFirstDigit;
+  String tokenOtp;
 
   void checkRegisterTelephone() async {
     if (phoneNumber.text.isEmpty) {
       errtext = 'Value is not empty';
     } else if (phoneNumber.text.length > 0 && phoneNumber.text.length < 10) {
-      errtext = 'tel must be 10 digit';
+      errtext = 'Phone Number must be 10 digit';
     } else {
       if (phoneNumber.text.startsWith('0')) {
         phoneCutFirstDigit = '+66' + phoneNumber.text.substring(1);
+        var url =
+            'https://api.staging.uchat.zimpligital.com/api/auth/otp/request';
+        var response = await http.post(url, body: {
+          'phoneNumber': phoneCutFirstDigit,
+          'countryCode': countryCode
+        });
+        print('Response status: ${response.statusCode}');
+        print('Response body: ${response.body}');
+        print('Phone : $phoneCutFirstDigit');
+        tokenOtp = response.body;
+        print('token : $tokenOtp');
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Otp(tokenOtp)),
+        );
       } else {
-        phoneCutFirstDigit = phoneNumber.text;
+        errtext = 'Phone number start by 0';
       }
-      var url =
-          'https://api.staging.uchat.zimpligital.com/api/auth/otp/request';
-      var response = await http.post(url, body: {
-        'phoneNumber': phoneCutFirstDigit,
-        'countryCode': countryCode
-      });
-      print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
-      print('phone : $phoneCutFirstDigit');
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Otp()),
-      );
     }
   }
 
