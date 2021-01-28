@@ -9,7 +9,6 @@ class RegisComp extends StatefulWidget {
 }
 
 class _RegisCompState extends State<RegisComp> {
-
   Widget buildAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Color(0xffffffff),

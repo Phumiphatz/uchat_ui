@@ -24,6 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  http: ^0.12.2
+
   # Data store
   hive: ^1.4.4+1
   hive_flutter: ^0.3.1

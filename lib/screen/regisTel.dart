@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uchat/widget/widget.dart';
 import 'package:uchat/screen/regisOtp.dart';
+import 'package:http/http.dart' as http;
 
 class RegisTel extends StatefulWidget {
   @override
@@ -9,21 +10,35 @@ class RegisTel extends StatefulWidget {
 }
 
 class _RegisTelState extends State<RegisTel> {
-  final _text = TextEditingController();
+  final phoneNumber = TextEditingController();
+  final countryCode = 'TH';
   String errtext;
+  String phoneCutFirstDigit;
 
-  void checkRegisterTelephone() {
-    if (_text.text.isEmpty) {
+  void checkRegisterTelephone() async {
+    if (phoneNumber.text.isEmpty) {
       errtext = 'Value is not empty';
-    } else if (_text.text.length > 0 && _text.text.length < 10) {
+    } else if (phoneNumber.text.length > 0 && phoneNumber.text.length < 10) {
       errtext = 'tel must be 10 digit';
-    } else if (_text.text == "0629999999") {
+    } else {
+      if (phoneNumber.text.startsWith('0')) {
+        phoneCutFirstDigit = '+66' + phoneNumber.text.substring(1);
+      } else {
+        phoneCutFirstDigit = phoneNumber.text;
+      }
+      var url =
+          'https://api.staging.uchat.zimpligital.com/api/auth/otp/request';
+      var response = await http.post(url, body: {
+        'phoneNumber': phoneCutFirstDigit,
+        'countryCode': countryCode
+      });
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      print('phone : $phoneCutFirstDigit');
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Otp()),
       );
-    } else {
-      errtext = 'tel = 0629999999';
     }
   }
 
@@ -64,7 +79,7 @@ class _RegisTelState extends State<RegisTel> {
                     Padding(
                       padding: const EdgeInsets.only(left: 30, right: 30),
                       child: TextField(
-                        controller: _text,
+                        controller: phoneNumber,
                         maxLength: 10,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
