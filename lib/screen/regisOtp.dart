@@ -81,13 +81,6 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
       elevation: 0.0,
       leading: new InkWell(
         borderRadius: BorderRadius.circular(30.0),
-        child: new Icon(
-          Icons.arrow_back_ios,
-          color: Colors.black54,
-        ),
-        onTap: () {
-          Navigator.pop(context);
-        },
       ),
       centerTitle: true,
       title: Text('Registration', style: appBarTextStyle()),
