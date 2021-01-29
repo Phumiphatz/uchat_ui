@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:uchat/screen/regisComp.dart';
 import 'package:uchat/widget/widget.dart';
 import 'package:http/http.dart' as http;
 
@@ -25,6 +26,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
   int fifthDigit;
   int sixthDigit;
   String otp;
+  String status;
 
   void clearOtp() {
     sixthDigit = null;
@@ -53,20 +55,24 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
   }
 
   void checkOtp() async {
+    print('Otp : $otp');
+    print('token : ${widget.tokenOtp}');
     var url = 'https://api.staging.uchat.zimpligital.com/api/auth/otp/verify';
     var response =
         await http.post(url, body: {'token': widget.tokenOtp, 'otp': otp});
     print('Response status: ${response.statusCode}');
     print('Response body: ${response.body}');
-    print('Otp : $otp');
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => RegisComp()),
-    // );
+    status = response.body;
+
+    if (status == 'true') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => RegisComp()),
+      );
+    } else {
+      clearOtp();
+    }
   }
-  // } else {
-  //   clearOtp();
-  // }
 
   // Returns "Appbar"
   get getAppbar {
@@ -105,7 +111,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
   // Return "Verification Code" label
   get getVerificationCodeLabel {
     return Padding(
-      padding: const EdgeInsets.only(top: 30),
+      padding: const EdgeInsets.only(top: 20),
       child: new Text(
         "Verification Code",
         textAlign: TextAlign.center,
