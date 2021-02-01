@@ -1,21 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:uchat/screen/regisComp.dart';
+import 'package:uchat/screen/registerComplete.dart';
+import 'package:uchat/screen/registerProfile.dart';
 import 'package:uchat/widget/widget.dart';
 import 'package:http/http.dart' as http;
 
-class Otp extends StatefulWidget {
+class RegisterOtp extends StatefulWidget {
   String tokenOtp;
-  Otp(String tokenOtp) {
+  String typeOtp;
+  RegisterOtp(String tokenOtp, String typeOtp) {
     this.tokenOtp = tokenOtp;
+    this.typeOtp = typeOtp;
   }
 
   @override
-  _OtpState createState() => new _OtpState();
+  RegisterOtpState createState() => new RegisterOtpState();
 }
 
-class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
+class RegisterOtpState extends State<RegisterOtp>
+    with SingleTickerProviderStateMixin {
   // Variables
   Size screenSize;
   int currentDigit;
@@ -57,6 +61,7 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
   void checkOtp() async {
     print('Otp : $otp');
     print('token : ${widget.tokenOtp}');
+    print('token : ${widget.typeOtp}');
     var url = 'https://api.staging.uchat.zimpligital.com/api/auth/otp/verify';
     var response =
         await http.post(url, body: {'token': widget.tokenOtp, 'otp': otp});
@@ -64,10 +69,17 @@ class _OtpState extends State<Otp> with SingleTickerProviderStateMixin {
     print('Response body: ${response.body}');
     status = response.body;
 
-    if (status == 'true') {
+    if (status == 'true' && widget.typeOtp == 'LOGIN') {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => RegisComp()),
+      );
+    } else if (status == 'true' && widget.typeOtp == 'REGISTER') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                RegisterProfile(widget.tokenOtp, widget.typeOtp, otp)),
       );
     } else {
       clearOtp();

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uchat/screen/groupMember.dart';
-import 'package:uchat/screen/regisTel.dart';
+import 'package:uchat/screen/registerTelephone.dart';
 
 class ContactsPane extends StatefulWidget {
   @override

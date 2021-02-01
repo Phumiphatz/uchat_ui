@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uchat/widget/widget.dart';
-import 'package:uchat/screen/regisOtp.dart';
+import 'package:uchat/screen/registerOtp.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
@@ -16,6 +16,7 @@ class _RegisTelState extends State<RegisTel> {
   String errtext;
   String phoneCutFirstDigit;
   String tokenOtp;
+  String typeOtp;
 
   void checkRegisterTelephone() async {
     if (phoneNumber.text.isEmpty) {
@@ -27,7 +28,6 @@ class _RegisTelState extends State<RegisTel> {
         phoneCutFirstDigit = '+66' + phoneNumber.text.substring(1);
         var url =
             'https://api.staging.uchat.zimpligital.com/api/auth/otp/request';
-        ;
 
         // Await the http get response, then decode the json-formatted response.
         var response = await http.post(url, body: {
@@ -37,27 +37,19 @@ class _RegisTelState extends State<RegisTel> {
         if (response.statusCode == 200) {
           var jsonResponse = convert.jsonDecode(response.body);
           var token = jsonResponse['token'];
+          var type = jsonResponse['type'];
           print('token: $token');
+          print('type: $type');
           tokenOtp = token;
+          typeOtp = type;
         } else {
           print('Request failed with status: ${response.statusCode}.');
         }
-        //
-        // var url =
-        //     'https://api.staging.uchat.zimpligital.com/api/auth/otp/request';
-        // var response = await http.post(url, body: {
-        //   'phoneNumber': phoneCutFirstDigit,
-        //   'countryCode': countryCode
-        // });
-
-        // print('Response status: ${response.statusCode}');
-        // print('Response body: ${response.body}');
-        // print('Phone : $phoneCutFirstDigit');
-        // print('token : $tokenOtp');
 
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Otp(tokenOtp)),
+          MaterialPageRoute(
+              builder: (context) => RegisterOtp(tokenOtp, typeOtp)),
         );
       } else {
         errtext = 'Phone number start by 0';
